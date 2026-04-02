@@ -1,7 +1,9 @@
 package com.example.tienda_demo.controllers;
 
 import com.example.tienda_demo.domain.Person;
+import com.example.tienda_demo.services.PeopleService;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -17,10 +19,16 @@ import java.util.List;
 )
 public class PersonRestController {
 
+    PeopleService peopleService;
+
+    public PersonRestController(@Qualifier("people") PeopleService peopleService){
+        this.peopleService = peopleService;
+    }
+
     ArrayList<Person> people = new ArrayList<>(
-            List.of(new Person(1L, "Lau", "Morning"),
-                    new Person(2L, "Sil", "Robert"),
-                    new Person(3L, "Loba", "Roja"))
+            List.of(new Person(1L, "Col", "Dano"),
+                    new Person(2L, "Ras", "Lock"),
+                    new Person(3L, "Hi", "Den"))
     );
 
     @GetMapping("/{id}")
@@ -39,7 +47,8 @@ public class PersonRestController {
 
     @GetMapping
     public ResponseEntity<List<Person>> listPerson(){
-        return ResponseEntity.ok(this.people);
+        List<Person> people = peopleService.listAllPeople();
+        return ResponseEntity.ok(people);
     }
 
     @PostMapping
