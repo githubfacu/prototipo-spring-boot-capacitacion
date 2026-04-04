@@ -1,9 +1,13 @@
 package com.example.tienda_demo.controllers;
 
+import com.example.tienda_demo.configurations.AppConfig;
+import com.example.tienda_demo.configurations.StoreParametersConfig;
 import com.example.tienda_demo.domain.Person;
 import com.example.tienda_demo.services.PeopleService;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -12,6 +16,7 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("/people")
 @Tag(name = "API people",
@@ -20,8 +25,12 @@ import java.util.List;
 public class PersonRestController {
 
     PeopleService peopleService;
+    AppConfig appConfig;
+    StoreParametersConfig storeConfig;
 
-    public PersonRestController(@Qualifier("people") PeopleService peopleService){
+    public PersonRestController(@Lazy PeopleService peopleService, AppConfig appConfig, StoreParametersConfig storeConfig){
+        log.info("AppConfig: {}", appConfig);
+        log.info("StoreConfig: {}", storeConfig);
         this.peopleService = peopleService;
     }
 
