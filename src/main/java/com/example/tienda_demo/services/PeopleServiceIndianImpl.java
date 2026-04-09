@@ -18,9 +18,9 @@ public class PeopleServiceIndianImpl implements PeopleService{
 
     private ReportPDFImpl reportPDF;
     ArrayList<Person> indian = new ArrayList<>(
-            List.of(new Person(1L, "Raj", "Krishna"),
-                    new Person(2L, "Bahubali", "Kumar"),
-                    new Person(3L, "Radha", "Kumar"))
+            List.of(new Person(1L, "Raj", "Krishna", "krishna@email.com", "aaabc6"),
+                    new Person(2L, "Bahubali", "Kumar", "bahubali@email.com", "aaabcd1"),
+                    new Person(3L, "Radha", "Kumar", "ritu@email.com", "aaabc67"))
     );
 
     public PeopleServiceIndianImpl(ReportPDFImpl reportPDF){

@@ -10,9 +10,9 @@ import java.util.List;
 @ConditionalOnProperty(prefix = "implementation", value = "people", havingValue = "world-people")
 public class PeopleServiceImpl implements PeopleService {
     ArrayList<Person> worldPeople = new ArrayList<>(
-            List.of(new Person(1L, "Momo", "Morning"),
-                    new Person(2L, "Rober", "Sina"),
-                    new Person(3L, "Lago", "Coller"))
+            List.of(new Person(1L, "Momo", "Morning", "morning@email.com", "abcdef1"),
+                    new Person(2L, "Rober", "Sina", "sina@email.com", "abcdef22"),
+                    new Person(3L, "Lago", "Coller", "coll@email.com", "abcdefg3"))
     );
     @Override
     public List<Person> listAllPeople(){
