@@ -18,4 +18,19 @@ public class PeopleServiceImpl implements PeopleService {
     public List<Person> listAllPeople(){
         return this.worldPeople;
     }
+
+    @Override
+    public Person savePerson(Person person) {
+        return null;
+    }
+
+    @Override
+    public Person updatePerson(Person person) {
+        return null;
+    }
+
+    @Override
+    public void deletePerson(Long id) {
+
+    }
 }
